@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Database\Factories\CvBaseFactory;
 
 class CvBase extends Model
 {
@@ -29,5 +30,8 @@ class CvBase extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+    public function factory()
+    {
+        return CvBaseFactory::new(); 
+    }
 }
