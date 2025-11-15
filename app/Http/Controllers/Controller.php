@@ -17,6 +17,7 @@ class Controller extends BaseController
     {
         $user = Auth::user();
         if ($user->hasRole('empleador')) {
+            return "dasboard empleador";
             return inertia('Empleador/Dashboard');
         } elseif ($user->hasRole('candidato')) {
             $ofertas = OfertaTrabajo::all();

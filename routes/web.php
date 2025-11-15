@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\OfertaTrabajoController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +35,6 @@ Route::middleware([
     // })->name('dashboard');
     Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard');
 
+    Route::get('/ofertas/{oferta}', [OfertaTrabajoController::class, 'show'])->name('ofertas.show');
     
 });
