@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\OfertaTrabajo;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456789')
         ]);
         $this->call(RoleSeeder::class);
+        OfertaTrabajo::factory(10)->create();
     }
 }

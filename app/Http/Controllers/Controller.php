@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Inertia;
+use App\Models\OfertaTrabajo;
 
 class Controller extends BaseController
 {
@@ -15,13 +17,14 @@ class Controller extends BaseController
     {
         $user = Auth::user();
         if ($user->hasRole('empleador')) {
-            return "empleador";
             return inertia('Empleador/Dashboard');
         } elseif ($user->hasRole('candidato')) {
-            return "candidato";
-            return inertia('Candidato/Dashboard');
+            $ofertas = OfertaTrabajo::all();
+            return inertia('DashboardCandidato', [
+                'ofertas' => $ofertas
+            ]);
         }
-    
+
 
         return inertia('Principal');
     }

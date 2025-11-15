@@ -30,8 +30,8 @@ class CvBase extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function factory()
-    {
-        return CvBaseFactory::new(); 
-    }
+    // public function factory()
+    // {
+    //     return CvBaseFactory::new(); 
+    // }
 }
