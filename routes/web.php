@@ -39,11 +39,22 @@ Route::middleware([
     Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard');
 
     Route::prefix('ofertatrabajo')->group(function () {
+        Route::get('/', [OfertaTrabajoController::class, 'index'])->name('ofertas.index');
         Route::get('/{id}', [OfertaTrabajoController::class, 'show'])->name('ofertas.show');
+        Route::post('/', [OfertaTrabajoController::class, 'store'])->name('ofertas.store');
     });
     Route::prefix('cvs')->group(function () {
         Route::get('/', [CurriculumController::class, 'index'])->name('curriculums.index');
         Route::post('/', [CurriculumController::class, 'store'])->name('curriculums.store');
         Route::get('/{id}', [CurriculumController::class, 'show'])->name('curriculums.show');
+    });
+    Route::prefix('oferta-trabajo')->group(function () {
+
+        
+        Route::get('/create', [OfertaTrabajoController::class, 'create'])->name('ofertas.create');
+        Route::get('/{id}/edit', [OfertaTrabajoController::class, 'edit'])->name('ofertas.edit');
+        Route::put('/{id}', [OfertaTrabajoController::class, 'update'])->name('ofertas.update');
+        Route::delete('/{id}', [OfertaTrabajoController::class, 'destroy'])->name('ofertas.destroy');
+        Route::get('/{id}', [OfertaTrabajoController::class, 'show'])->name('ofertas.show');
     });
 });

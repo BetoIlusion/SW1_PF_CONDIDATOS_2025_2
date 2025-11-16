@@ -17,16 +17,13 @@ class Controller extends BaseController
     {
         $user = Auth::user();
         if ($user->hasRole('empleador')) {
-            return "dasboard empleador";
-            return inertia('Empleador/Dashboard');
+            return inertia('DashboardEmpleador');
         } elseif ($user->hasRole('candidato')) {
             $ofertas = OfertaTrabajo::all();
             return inertia('DashboardCandidato', [
                 'ofertas' => $ofertas
             ]);
         }
-
-
         return inertia('Principal');
     }
 }

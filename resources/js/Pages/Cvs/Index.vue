@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import DialogModal from '@/Components/DialogModal.vue';
-import CreateCvForm from './create.vue'; // Importamos el formulario
+import CreateCvForm from './Components/CreateCvForm.vue'; // Importamos el formulario
 import {
     BriefcaseIcon,
     AcademicCapIcon,

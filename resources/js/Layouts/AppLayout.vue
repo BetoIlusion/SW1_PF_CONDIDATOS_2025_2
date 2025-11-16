@@ -56,7 +56,10 @@ const logout = () => {
                                     :href="route('curriculums.index')" :active="route().current('curriculums.index')">
                                     Curriculums
                                 </NavLink>
-
+                                <NavLink v-if="$page.props.userRoles.includes('empleador')"
+                                    :href="route('ofertas.index')" :active="route().current('ofertas.index')">
+                                    Ofertas de Trabajo
+                                </NavLink>
                             </div>
                         </div>
 
