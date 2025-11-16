@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\OfertaTrabajoController;
+use App\Http\Controllers\CurriculumController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,6 +36,14 @@ Route::middleware([
     // })->name('dashboard');
     Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard');
 
-    Route::get('/ofertas/{oferta}', [OfertaTrabajoController::class, 'show'])->name('ofertas.show');
-    
+    Route::get('/dashboard', [Controller::class, 'index'])->name('dashboard');
+
+    Route::prefix('ofertatrabajo')->group(function () {
+        Route::get('/{id}', [OfertaTrabajoController::class, 'show'])->name('ofertas.show');
+    });
+    Route::prefix('cvs')->group(function () {
+        Route::get('/', [CurriculumController::class, 'index'])->name('curriculums.index');
+        Route::post('/', [CurriculumController::class, 'store'])->name('curriculums.store');
+        Route::get('/{id}', [CurriculumController::class, 'show'])->name('curriculums.show');
+    });
 });
